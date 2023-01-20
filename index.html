@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./style.css" rel="stylesheet">
+    <title>🐍 Snake!</title>
+</head>
+<body>
+    <div id="start" class="game-dialog">
+        <div class="game-dialog-content">
+            <h1>Snake!</h1>
+            <p>A classic arcade Snake game.</p> 
+            <p>Eat the apples to score points, but don't hit the wall or yourself!</p>
+            <button id="btnPlay" type="button">Play ▶️</button>
+            <div>
+                <button id="btnSettings">⚙️</button>
+                <button id="btnAbout">❔</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="settings" class="game-dialog" style="display: none;">
+        <div class="game-dialog-content">
+            <p>Choose speed.</p> 
+            <button class="btnSpeed">Slow</button>
+            <button class="btnSpeed">Normal</button>
+            <button class="btnSpeed">Fast</button>
+            <button type="button" onclick="this.parentElement.parentElement.style.display='none';">Back ◀️</button>
+        </div>
+    </div>
+
+    <div id="about" class="game-dialog" style="display: none;">
+        <div class="game-dialog-content">
+            <h1>About</h1>
+            <p>Written by Alex Zajork</p>
+            <button type="button" onclick="this.parentElement.parentElement.style.display='none';">Back ◀️</button>
+        </div>
+    </div>
+
+    <div id="game-container">
+        <canvas height="400px" width="600px"></canvas>
+        <div class="game-info-container">
+            <div class="game-info">
+                <label>Score:</label>
+                <span id="score"></span>
+            </div>
+            <div class="game-info">
+                <label>Best:</label>
+                <span id="best">0</span>
+            </div>
+            <div class="game-info">
+                <label>Speed:</label>
+                <span id="speed">normal</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="./page.js" type="module"></script>
+
+</body>
+</html>

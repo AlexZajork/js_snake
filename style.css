@@ -1,0 +1,57 @@
+body{
+    background-color: rgb(248, 232, 181);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#game-container {
+    text-align: center;
+}
+
+canvas {
+    background-color: rgb(153, 209, 148);
+    border: 3px solid black;
+}
+
+.game-info {
+    display: inline;
+}
+.game-info:not(last-child) {
+    padding-right: 30px;
+}
+
+.game-dialog {
+    height: 275px;
+    width: 300px;
+    top: 75px;
+    left:0px;
+    right: 0px;
+    background-color: white;
+    position:absolute;
+    border-radius: 4%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.game-dialog-content{
+    align-self: center;
+    text-align: center;
+}
+
+.game-dialog-content button {
+    display: inline-block;
+    margin-top: 5px;
+    padding: 10px 20px 10px 20px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    background-color: rgb(90, 180, 90);
+    color:#235e23
+}
+.game-dialog-content button:hover {
+    background-color: rgb(78, 161, 78);
+    cursor: pointer;
+}
+
+
+
