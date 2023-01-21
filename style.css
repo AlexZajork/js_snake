@@ -10,6 +10,7 @@ body{
 canvas {
     background-color: rgb(153, 209, 148);
     border: 3px solid black;
+    cursor: none;
 }
 
 .game-info {
@@ -28,9 +29,11 @@ canvas {
     background-color: white;
     position:absolute;
     border-radius: 4%;
+    border: 1.5px solid black;
     margin: auto;
     display: flex;
     justify-content: center;
+    box-shadow: 1px 1px 1px rgb(75, 75, 75);
 }
 
 .game-dialog-content{

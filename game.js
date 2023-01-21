@@ -165,17 +165,61 @@ class Apple {
 class Display {
     draw(state) {  
         this.#clear();
+        CTX.translate(0,0);
         let snake = state.snake;
         let apple = state.apple;
 
         // Draw snake
-        snake.position.map(block => {  
+        snake.position.map((block, i) => {  
             let [x,y] = Grid.getCoordinates(state.grid, block);
-            CTX.beginPath(); 
-            CTX.rect(x, y, BLOCKSIZE, BLOCKSIZE);
-            CTX.fillStyle = '#235e23';
-            CTX.fill();
-            CTX.stroke();
+            
+            if (i < snake.position.length -1) {
+                // Body
+                CTX.beginPath(); 
+                CTX.rect(x, y, BLOCKSIZE, BLOCKSIZE);
+                (i%2==0) ? CTX.fillStyle = '#235e23' : CTX.fillStyle = '#555e23';
+                CTX.fill();
+                CTX.stroke();
+            } else {
+                // Head
+                CTX.beginPath(); 
+                CTX.rect(x, y, BLOCKSIZE, BLOCKSIZE);
+                (i%2==0) ? CTX.fillStyle = '#235e23' : CTX.fillStyle = '#555e23';
+                CTX.fill();
+                CTX.stroke();
+
+                // Place our context in the center of our grid. Rotate for direction of snake.
+                CTX.translate(x+ BLOCKSIZE/2,y  +BLOCKSIZE/2) 
+                let rotate = {
+                    'left' : 90,
+                    'right' : 270,
+                    'up' : 180,
+                    'down': 0
+                };
+                let radians = rotate[snake.direction] * Math.PI/180;
+                CTX.rotate(radians)
+
+                // Tongue
+                const tongueWidth = BLOCKSIZE/6;
+                const tongueLength = BLOCKSIZE/3;
+                CTX.beginPath(); 
+                CTX.rect(-tongueWidth/2, BLOCKSIZE/2, tongueWidth, tongueLength)
+                CTX.fillStyle = 'red';
+                CTX.fill();
+                CTX.stroke();
+
+                // Eyes
+                const eyeSize = BLOCKSIZE/8;
+                CTX.beginPath(); 
+                CTX.rect(-eyeSize*1.5-(eyeSize/2),eyeSize, eyeSize, eyeSize)
+                CTX.rect(eyeSize*1.5-(eyeSize/2),eyeSize, eyeSize, eyeSize)
+                CTX.fillStyle = 'black';
+                CTX.fill();
+                CTX.stroke();
+                
+                // Reset current transformation matrix to the identity matrix
+                CTX.setTransform(1, 0, 0, 1, 0, 0);
+            }
         });
         
         // Draw apple
